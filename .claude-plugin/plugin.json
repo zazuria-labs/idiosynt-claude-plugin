@@ -1,0 +1,19 @@
+{
+  "name": "idiosynt",
+  "displayName": "Idiosynt",
+  "version": "0.1.3",
+  "description": "Talk with your wits and convene your board from Claude. Your wits keep their own views and memory in your Idiosynt account; replies come back in their own words, attributed.",
+  "author": {
+    "name": "Zazuria Labs LLC",
+    "url": "https://www.idiosynt.com"
+  },
+  "homepage": "https://www.idiosynt.com",
+  "license": "MIT",
+  "keywords": [
+    "wits",
+    "boardroom",
+    "advice",
+    "memory"
+  ],
+  "privacyPolicyUrl": "https://www.idiosynt.com/privacy"
+}

@@ -1,0 +1,14 @@
+{
+  "name": "idiosynt",
+  "owner": {
+    "name": "Zazuria Labs LLC",
+    "email": "support@idiosynt.com"
+  },
+  "plugins": [
+    {
+      "name": "idiosynt",
+      "source": "./",
+      "description": "Talk with your wits and convene your board from Claude. Your wits keep their own views and memory in your Idiosynt account; replies come back in their own words, attributed."
+    }
+  ]
+}

@@ -1,0 +1,223 @@
+{
+  "tools": [
+    {
+      "name": "whoami",
+      "title": "Who am I",
+      "description": "Confirm that this connection is signed in to the Idiosynt account whose wits you can reach here, and which app it is connected through.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "list_constructs",
+      "title": "List your wits",
+      "description": "List the wits you can talk to (id, name, role). Use a wit's id with talk_to_construct.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "recall",
+      "title": "What a wit remembers",
+      "description": "Return what one of your wits remembers about you and your business: their distilled, dated memories — decisions (with any dissent preserved), facts, preferences, commitments and open loops — never the raw conversation. When the wit's ledger is on, the result also carries what stands: the person's decisions with their history, the wit's recommendations with the person's ruling on each (adopted, declined, partly taken, or still open), open commitments and open questions. The wit already carries these into every reply. This tool is for when the person asks what the wit remembers or how their counsel has fared.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "construct_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "limit": {
+            "type": "integer"
+          }
+        },
+        "required": ["construct_id"]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "talk_to_construct",
+      "title": "Talk to a wit",
+      "description": "Send a message to one of your wits and receive their reply. Direct replies carry the wit's own words, returned verbatim with an attribution line (— Name · via Idiosynt). Wits with vision can look at a supported HTTPS page at desktop and phone widths through page_url, or supported image links through image_urls.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "construct_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "message": {
+            "type": "string"
+          },
+          "image_urls": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "page_url": {
+            "type": "string"
+          }
+        },
+        "required": ["construct_id", "message"]
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "begin_session",
+      "title": "Start a new session with a wit",
+      "description": "Start a fresh session with one of your wits. The current session closes and is distilled into the wit's memory first, so the wit carries what mattered forward and the new session starts with a clean exchange. Call this when the person says they want to start over, change topic for good, or begin a new piece of work — not between ordinary turns. Sessions also close on their own after six hours of silence.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "construct_id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": ["construct_id"]
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "confirm_recall",
+      "title": "Record your feedback on a recall",
+      "description": "Record the person's explicit judgment about a recall receipt returned by a wit's reply. This records the person's stated judgment that a specific recollection was right, wrong or out of date, not an inference. Retries of the same feedback use the same request_id. This is recorded as host-reported feedback, separate from direct confirmation in Idiosynt. It does not rewrite history or rate advice.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "receipt_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "request_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": ["correct", "incorrect", "stale"]
+          },
+          "business_context": {
+            "type": "boolean"
+          }
+        },
+        "required": ["receipt_id", "request_id", "verdict", "business_context"]
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "list_boards",
+      "title": "List your boards",
+      "description": "List the user's boards (id, name, purpose) — each seats several of their wits. Use board_deliberate to convene one.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "board_deliberate",
+      "title": "Convene the board",
+      "description": "Put a question to one of your boards. The seated wits deliberate in turn, and the result carries each wit's words with attribution, followed by a memo of where they agree and where they differ, with attributed quotations where available. The decision stays with the person. A sitting is one round unless the person asks for two, so they can respond sooner. Boards come from list_boards; wits from list_constructs. A sitting can take a minute or more.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "room_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "question": {
+            "type": "string"
+          },
+          "advisor_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "rounds": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2
+          }
+        },
+        "required": ["room_id", "question", "advisor_ids"]
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "board_chime_in",
+      "title": "Chime in on a deliberation",
+      "description": "Add the convener's words to an existing deliberation: the message joins the record as theirs, and every seated wit responds directly. When the person replies to a sitting under way, that reply is their chime-in, sent in their own words. The result carries each wit's response with attribution. The deliberation_id comes from board_deliberate.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "room_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "deliberation_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": ["room_id", "deliberation_id", "message"]
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    }
+  ]
+}

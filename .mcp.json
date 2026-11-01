@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "idiosynt": {
+      "type": "http",
+      "url": "https://www.idiosynt.com/api/connector/mcp"
+    }
+  }
+}
