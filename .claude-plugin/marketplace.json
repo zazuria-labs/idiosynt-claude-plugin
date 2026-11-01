@@ -4,6 +4,9 @@
     "name": "Zazuria Labs LLC",
     "email": "support@idiosynt.com"
   },
+  "metadata": {
+    "description": "Idiosynt: talk with your wits and convene your board from Claude."
+  },
   "plugins": [
     {
       "name": "idiosynt",
