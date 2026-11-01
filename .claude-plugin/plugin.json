@@ -1,13 +1,17 @@
 {
   "name": "idiosynt",
   "displayName": "Idiosynt",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Talk with your wits and convene your board from Claude. Your wits keep their own views and memory in your Idiosynt account; replies come back in their own words, attributed.",
   "author": {
     "name": "Zazuria Labs LLC",
     "url": "https://www.idiosynt.com"
   },
   "homepage": "https://www.idiosynt.com",
+  "repository": "https://github.com/zazuria-labs/idiosynt-claude-plugin",
+  "documentationUrl": "https://www.idiosynt.com/help/claude",
+  "supportUrl": "mailto:support@idiosynt.com",
+  "termsOfServiceUrl": "https://www.idiosynt.com/terms",
   "license": "MIT",
   "keywords": [
     "wits",
