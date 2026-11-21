@@ -2,3 +2,6 @@
 Thumbs.db
 desktop.ini
 __MACOSX/
+
+# Development evals live in the source-of-record copy (zazuria-labs/zazuria, integrations/claude-plugin/idiosynt/evals) and are not published with the plugin.
+evals/
