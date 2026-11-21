@@ -34,4 +34,4 @@ Idiosynt handles this data under its privacy policy at https://www.idiosynt.com/
 
 ## Licence and trademarks
 
-The plugin's instructions are released under the MIT License (see `LICENSE`). The Idiosynt name and logo, including `.claude-plugin/icon.png`, are trademarks of Zazuria Labs LLC and are not licensed under the MIT License.
+The plugin's instructions are released under the MIT License (see `LICENSE`). The Idiosynt name and logo, including the icon shipped with this plugin, are trademarks of Zazuria Labs LLC and are not licensed under the MIT License.
