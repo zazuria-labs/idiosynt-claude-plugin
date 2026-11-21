@@ -31,3 +31,7 @@ This plugin contains instructions and a connector address only. It runs no code 
 When you use it, Claude sends Idiosynt the messages, questions, links and feedback you ask it to pass to your wits, under the Idiosynt account you signed in with. Idiosynt returns your wits' replies, their memories of your work and your board's deliberations. Conversations with your wits are saved to your Idiosynt account so your wits remember them. The plugin does not read your Claude chat history, memory or files.
 
 Idiosynt handles this data under its privacy policy at https://www.idiosynt.com/privacy. Support: support@idiosynt.com.
+
+## Licence and trademarks
+
+The plugin's instructions are released under the MIT License (see `LICENSE`). The Idiosynt name and logo, including `.claude-plugin/icon.png`, are trademarks of Zazuria Labs LLC and are not licensed under the MIT License.
